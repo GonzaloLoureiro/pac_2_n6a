@@ -1,0 +1,10 @@
+<div class="detail-container" *ngIf="todo">
+    <h2>Detalle del Todo</h2>
+    <p><strong>ID:</strong> {{ todo.id }}</p>
+    <p><strong>Título:</strong> {{ todo.title }}</p>
+    <p><strong>Completado:</strong> {{ todo.completed ? 'Sí' : 'No' }}</p>
+    <button class="btn btn-secondary" (click)="goBack()">Cancelar</button>
+</div>
+<div class="loading-message" *ngIf="!todo">
+    Cargando detalles del todo...
+</div>

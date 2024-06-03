@@ -1,8 +1,16 @@
 <div class="container">
-  <h1 class="mt-5">Realizar la consigna debajo de este mensaje</h1>
-</div>
-
-<!-- Html faltante -->
-<div>
-  <button class="btn btn-primary" (click)="randomMethod()">Search</button>
+  <h1 class="mt-5">Lista de Todos</h1>
+  <div class="search-container">
+    <input type="text" class="form-control" [(ngModel)]="searchTerm" (input)="onInput()" placeholder="Buscar...">
+    <button class="btn btn-primary" (click)="randomMethod()" [disabled]="!isSearchEnabled">Search</button>
+  </div>
+  <ul *ngIf="filteredTodos.length > 0">
+    <li *ngFor="let todo of filteredTodos">
+      {{ todo.title }}
+      <button class="btn btn-info btn-sm" (click)="viewDetails(todo.id)">Ver Detalle</button>
+    </li>
+  </ul>
+  <div *ngIf="filteredTodos.length === 0" class="no-results-banner">
+    No se encontraron resultados.
+  </div>
 </div>
